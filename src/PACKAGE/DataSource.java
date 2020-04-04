@@ -1,3 +1,5 @@
+package PACKAGE;
+
 
 
 import java.sql.Connection;
@@ -99,45 +101,7 @@ public class DataSource {
             conn.close();
         } catch (SQLException e) {
                e.printStackTrace();
-        }}
+        }}}
            
            
-          public String CheckIfEmpty(String Required) {
-
-        System.out.println("Please enter " + Required);
-        boolean Empty = false;
-        String UserInput = "";
-        do {
-            try {
-                UserInput = br.readLine().toUpperCase();
-                if (UserInput.equals("")) {
-                    Empty = false;
-                    System.out.println(Required + "  " + "required, Please enter a valid one");
-                } else {
-                    Empty = true;
-                }
-            } catch (Exception input) {
-            }
-
-        } while (Empty == false);
-
-        return UserInput;
-    }}
-/*
-      public int question() {
-
-        int Answer = 0;
-
-        System.out.println("1 List all countries in the database"+"\n");
-        System.out.println("2 Find a country by country code"+"\n");
-        System.out.println("3 Find a country by name"+"\n");
-        System.out.println("4 Save a new country in the database "+"\n");
-
-        String optionSelected = useful.CheckIfEmpty("the number of the option you want");
-
-        Answer = Integer.parseInt(optionSelected);
-
-        return Answer;
-    }
-           
-}*/
+          

@@ -1,3 +1,5 @@
+package PACKAGE;
+
 
 
 
@@ -27,7 +29,9 @@ public class MySQLCountryDAO implements CountryDAO {
     public ArrayList<Country> getCountry() {
      ArrayList<Country> countries= new ArrayList<Country>();
         
-        String query= "SELECT * FROM country ORDER BY Continent ASC";
+     
+     
+        String query= "SELECT * FROM country";
         
         ResultSet rs= db.select(query);
         try{
