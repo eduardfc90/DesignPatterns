@@ -61,6 +61,9 @@ public class Main {
                         break;
                     case 2:
                         System.out.println("Country by Code");
+                         CountryDAO dao1= new MySQLCountryDAO();
+                        Country c=dao1.findCountry("POL");
+                          System.out.println(c);
                         
                         break;
                     case 3:
