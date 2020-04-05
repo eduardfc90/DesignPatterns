@@ -26,7 +26,7 @@ public class Main {
      * @param args the command line arguments
      */
 
-    
+    /// main method and menu main program
     public static void main(String[] args) {
         
              Scanner sn = new Scanner(System.in);
@@ -46,32 +46,40 @@ public class Main {
         
  
             try {
- 
+ ///menu options
                 System.out.println("Select an option , please :");
                 option = sn.nextInt();
  
                 switch (option) {
-                    case 1:
+                    case 1:///showing all the list
                         System.out.println("Showing  ALL list");
-                        
                          CountryDAO dao= new MySQLCountryDAO();
                         ArrayList<Country> countries = dao.getCountry();
                         System.out.println(countries);
                         
-                        break;
-                    case 2:
-                        System.out.println("Country by Code");
-                         CountryDAO dao1= new MySQLCountryDAO();
-                        Country c=dao1.findCountry("POL");
-                          System.out.println(c);
                         
                         break;
-                    case 3:
-                        System.out.println("Country by Name");
+                    case 2://// checking the country by code
+                       System.out.println("Showing  Country by Code");
+                      
+                        MySQLCountryDAO searchcode= new MySQLCountryDAO() ;
+                         searchcode.askcode();
+                        
+                        break;
+                    case 3:/// checking the country by name
+                        System.out.println("Showing Country by Name");
+                         MySQLCountryDAO searchname= new MySQLCountryDAO() ;
+                         searchname.askname();
                         break;
                     case 4:
-                        MySQLCountryDAO save1= new MySQLCountryDAO();
-                        //save1.getDetails();
+                       
+                        /// saving details into the data base
+                       MySQLCountryDAO insert= new MySQLCountryDAO() ;
+                         
+                       insert.getDetails();
+                       
+                       System.out.println("Saved Correctly!!!");
+                       
                         break;
                     case 5:
                         exit = true;
@@ -86,84 +94,9 @@ public class Main {
         
             
             
-        }
+        }}}
     
         
-        
-             
-      
-      
-     
-        /*ArrayList<Country> countries = dao.getCountry();
-        System.out.println(countries);
-        
-        Country c=dao.findCountry("POL");
-        System.out.println(c);*/
-    } 
-     }
- /*   public void readMenuImput(){
-BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
-try
-{
-boolean valid = false;
-String input="";
-do{
-System.out.println("Please enter a number");
-input= br.readLine();
-if(input.matches("[0-9]+")){
-valid= true;
-}else{
-valid=false;
-}
-}while(valid==false);
-
-if(input.equals("1")){
-checkAccBalance();
-
-}else if(input.equals("2")){
-WithDraw();
-}
-else if (input.equals("9"))
-{
-
-login();
-}
-
-}catch(Exception e){
-System.out.println("Error reading input");
-}
-*/
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //dao.saveCustomer(c);
-       // c= dao.findCustomer(228);
-        // System.out.println(c);
-        
-       /* ArrayList<Country> countries = dao.getCountry();
-        System.out.println(countries);*/
-      
-        
-        /*DAOcountryInterface ci= new countryDAOimplementation();
-        
-        ci.getCountry();*/
-        
-        
-        //  System.out.println(CheckIfEmpty("String Required"));
-        
-        /*System.out.println(ci.getCountry());*/
         
       
         

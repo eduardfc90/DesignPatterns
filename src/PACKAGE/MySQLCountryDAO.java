@@ -2,7 +2,8 @@ package PACKAGE;
 
 
 
-
+import PACKAGE.continent;
+import PACKAGE.continent.continents;
 
 
 import java.sql.ResultSet;
@@ -69,6 +70,16 @@ Scanner enter= new Scanner(System.in);
         
        return countries;  
     }
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
 
     @Override
     public Country findCountry(String countrycode) {
@@ -166,35 +177,82 @@ Scanner enter= new Scanner(System.in);
            
           return  db.save(query);  
     }
-    
-      /*    public void getDetails(){
+
+        public void getDetails(){
+           
+        Country c= null;
         
-     System.out.println("code please");
-    String code=enter.nextLine();
+     System.out.println("Insert Code please");
+    String Code=enter.nextLine();
     
-       System.out.println("name please");
-    String name=enter.nextLine();
+       System.out.println("Insert Name please");
+    String Name=enter.nextLine();
     
-       System.out.println("continent please");
-    String continent=enter.nextLine();
+       System.out.println("Insert Continent please");
+       String takecontinent=enter.nextLine();
+    String Continent=null;
     
-       System.out.println("area please");
-    String area=enter.nextLine();
-    
-       System.out.println("cabeza please");
-    String head=enter.nextLine();
-    
-    float Area=Float.parseFloat(area);
-    
-    Country c= new Country(code,name,continent,Area,head);
-    
-    saveCountry(c);
+    if(continent(takecontinent)){
+    Continent=takecontinent;
     }
-    */
     
-  
+       System.out.println("Insert SurfaceArea, please");
+    String SurfaceArea=enter.nextLine();
+    
+       System.out.println("Head of State, please");
+    String HeadOfState=enter.nextLine();
+    
+    //float SurfaceArea=Float.parseFloat(SurfaceArea);
+    
+    c= new Country.CountryBuilder(Code, Name).setContinent(Continent).setHeadOfState(HeadOfState).build();
+    
+    if(saveCountry(c)){
+    
+        System.out.println("Your request have been successfull!!!");
+    }
+    }
+    
+  // ask a name to find a country
+    public void askname(){
+    
+        System.out.println("enter the name");
+        String name = enter.nextLine();
+     
+        ArrayList<Country> count=new ArrayList<Country>();
+        
+        count=getName(name);
+    
+        for(Country c:count){
+            System.out.println(c);
+        }
+    }
+      
+       public void askcode(){
+    
+        System.out.println("enter the code");
+        String code = enter.nextLine();
+     
+       
+        Country c=null;
+        c=findCountry(code);
+        
+           System.out.println(c);
+       
+    }
+       
+       // takes a continent and validates it into the data base
+      
+       public boolean continent(String continent){
+       
+       for(continent c:continent.values()){
+          if(continent.equals(c.getContinent()) ){
+             return true;
+          }
+       }    
+          
+       
         
       
     
    
-}
+

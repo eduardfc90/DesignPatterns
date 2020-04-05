@@ -15,7 +15,7 @@ public class Country {
          private  float SurfaceArea;
          private  String HeadOfState;
          
-         
+         ///implementation builder pattern
    private Country(CountryBuilder builder)
                  
          {
@@ -27,7 +27,7 @@ public class Country {
              this.HeadOfState = builder.getHeadOfState();
 
  
-    
+    //// getters and setters
 }
             public String getCode() {
         return Code;
@@ -78,7 +78,7 @@ public class Country {
         return "Code:"+Code+"Name:"+Name +"Phone Number:"+Continent+"Address:"+HeadOfState;
         }
          
-         /// Using patterns Builder
+         /// Using patterns Builder cerating class
          public static class CountryBuilder{
              
          private  String Code;
@@ -87,13 +87,15 @@ public class Country {
          private  float SurfaceArea;
          private  String HeadOfState;
          
+         
+         //// constructor builder pattern
          public  CountryBuilder(String Code, String Name){
              
              this.Code=Code;
              this.Name=Name;
              
          }
-
+/// special setters for the builder pattern
                  public String getCode() {
                      return Code;
                  }

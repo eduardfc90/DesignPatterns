@@ -9,7 +9,9 @@ package PACKAGE;
  *
  * @author eduar
  */
-public class Addenum {
+public class continent {
+    
+    //enum requested for continent
     
      public enum continents {
          
@@ -26,7 +28,7 @@ public class Addenum {
         continents(String Continent) {
             this.Continent = Continent;
         }
-
+//// validation the enum
         public static continents fromString(String Continent) 
         {
             for (continents c : continents.values()) 

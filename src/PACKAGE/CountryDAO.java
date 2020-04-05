@@ -2,7 +2,7 @@ package PACKAGE;
 
 
 
-
+//  interfaces
 
 import PACKAGE.Country;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author eduar
  */
 public interface CountryDAO {
+    
     
     public ArrayList<Country> getCountry();
     public Country findCountry(String Code);

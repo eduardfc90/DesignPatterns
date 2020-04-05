@@ -1,6 +1,6 @@
 package PACKAGE;
 
-
+//// import  all sql 
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,7 +19,7 @@ import java.io.InputStreamReader;;
  * @author eduar
  */
 public class DataSource {
-    
+    ///connction with data base
     
     private String db= "jdbc:mysql://apontejaj.com:3306/world";
     private String un= "cctstudent";
@@ -36,7 +36,7 @@ public class DataSource {
         try{
             //get a connection to the database
             Connection conn= DriverManager.getConnection(db,un,pw);
-            //get a statement fro the connection
+            //get a statement  the connection
             Statement stmt = conn.createStatement();
             
             // #Execute the query
@@ -70,7 +70,7 @@ public class DataSource {
              System.out.println(e);
         }
     }
-    
+    ///saving into this method
     public boolean save(String query)
     {
           try {
