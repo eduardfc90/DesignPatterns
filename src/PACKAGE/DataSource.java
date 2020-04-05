@@ -71,7 +71,7 @@ public class DataSource {
         }
     }
     
-    public boolean save( String query)
+    public boolean save(String query)
     {
           try {
             stmt.execute(query);

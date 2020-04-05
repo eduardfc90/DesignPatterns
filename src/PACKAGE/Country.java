@@ -9,24 +9,22 @@ package PACKAGE;
  */
 public class Country {
    
-         private static  String Code;
-         private static String Name;
-         private static  String Continent;
-         private static float SurfaceArea;
-         private  static String HeadOfState;
+         private   String Code;
+         private  String Name;
+         private  String Continent;
+         private  float SurfaceArea;
+         private  String HeadOfState;
          
          
-         public Country( String Code, String Name, String  Continent,float SurfaceArea,String HeadOfState)
+   private Country(CountryBuilder builder)
                  
          {
              
-             this.Code= Code;
-             this.Name=Name;
-             this.Continent= Continent;
-             this.SurfaceArea= SurfaceArea;
-             this.HeadOfState = HeadOfState;
-             
-             
+             this.Code = builder.getCode();
+             this.Name=builder.getName();
+             this.Continent= builder.getContinent();
+             this.SurfaceArea= builder.getSurfaceArea();
+             this.HeadOfState = builder.getHeadOfState();
 
  
     
@@ -71,51 +69,81 @@ public class Country {
     public void setHeadOfState(String HeadOfState) {
         this.HeadOfState = HeadOfState;
     }
- // ALl the continents enum requested 
-   public enum continents {
-       
-        Asia("Asia"),
-        Europe("Europe"),
-        North_America("North America"),
-        Africa("Africa"),
-        Oceania("Oceania"),
-        Antarctica("Antarctica"),
-        SouthAmerica("South America");
-
-        private final String Continent;
-
-        continents(String Continent) {
-            this.Continent = Continent;
-        }
-
-        public static continents fromString(String Continent) 
-        {
-            for (continents c : continents.values()) 
-            {
-                if (c.getContinent().equals(Continent)) {
-                    return c;
-                }
-            }
-            return Europe;
-        }
-
-        // Here we can  return the name of the continent
+ 
+  
         
         
-        public String getContinent() {
-            return Continent;
-        }
-        
-        
-        
-        @Override
-        
-       
-        
-            
-       
-        
+        @Override        
          public String toString(){
         return "Code:"+Code+"Name:"+Name +"Phone Number:"+Continent+"Address:"+HeadOfState;
         }
+         
+         /// Using patterns Builder
+         public static class CountryBuilder{
+             
+         private  String Code;
+         private String Name;
+         private  String Continent;
+         private  float SurfaceArea;
+         private  String HeadOfState;
+         
+         public  CountryBuilder(String Code, String Name){
+             
+             this.Code=Code;
+             this.Name=Name;
+             
+         }
+
+                 public String getCode() {
+                     return Code;
+                 }
+
+                 public CountryBuilder setCode(String Code) {
+                     this.Code = Code;
+                     return this;
+                 }
+
+                 public String getName() {
+                     return Name;
+                 }
+
+                 public CountryBuilder setName(String Name) {
+                     this.Name = Name;
+                     return this;
+                 }
+
+                 public String getContinent() {
+                     return Continent;
+                 }
+
+                 public CountryBuilder setContinent(String Continent) {
+                     this.Continent = Continent;
+                     return this;
+                 }
+
+                 public float getSurfaceArea() {
+                     return SurfaceArea;
+                 }
+
+                 public CountryBuilder setSurfaceArea(float SurfaceArea) {
+                     this.SurfaceArea = SurfaceArea;
+                     return this;
+                 }
+
+                 public String getHeadOfState() {
+                     return HeadOfState;
+                 }
+
+                 public CountryBuilder setHeadOfState(String HeadOfState) {
+                     this.HeadOfState = HeadOfState;
+                     
+                    return this;
+                 }
+         public Country build (){
+         
+             return new Country(this);
+         }
+         
+         
 }}
+   

@@ -8,6 +8,7 @@ package PACKAGE;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 public class MySQLCountryDAO implements CountryDAO {
     
      DataSource db = new DataSource();
-
+Scanner enter= new Scanner(System.in);
     @Override
     public ArrayList<Country> getCountry() {
      ArrayList<Country> countries= new ArrayList<Country>();
@@ -34,22 +35,30 @@ public class MySQLCountryDAO implements CountryDAO {
         String query= "SELECT * FROM country";
         
         ResultSet rs= db.select(query);
+        
+        
+        
         try{
        while(rs.next()){
        
-           String code=rs.getString(1);
-           String name=rs.getString(2);
-           String continent=rs.getString(3);
-           float surfaceArea=rs.getFloat(4);
+           String Code=rs.getString(1);
+           String Name=rs.getString(2);
+           String Continent=rs.getString(3);
+           float SurfaceArea=rs.getFloat(4);
            String HeadOfState=rs.getString(5);
            
-           Country Country=null;
+           Country c=null;
            
            
            
-           Country= new Country(code, name, continent, surfaceArea, HeadOfState);
+           c= new Country.CountryBuilder(Code, Name).setContinent(Continent).setSurfaceArea(SurfaceArea).setHeadOfState(HeadOfState).build();
+          //Country.add(c)
+           
           
-           countries.add(Country);
+           
+           
+                     
+           
            
            
        }
@@ -68,24 +77,24 @@ public class MySQLCountryDAO implements CountryDAO {
         String query= "SELECT * FROM country where id="+countrycode+";";
         ResultSet rs= db.select(query);
        
-        String code="";
-        String name="";
-       String continent="";
-       float surface=0;
-       String head="";
+        String Code="";
+        String Name="";
+       String Continent="";
+       float SurfaceArea=0;
+       String HeadOfState="";
         Country c=null;
         
         try {
             if(rs.next()){
                 
-                code=rs.getString(1);
-                name=rs.getString(2);
-                continent=rs.getString(3);
-                surface=rs.getFloat(4);
-                head=rs.getString(5);
+                Code=rs.getString(1);
+                Name=rs.getString(2);
+                Continent=rs.getString(3);
+                SurfaceArea=rs.getFloat(4);
+                HeadOfState=rs.getString(5);
                 
                 
-                c = new Country(code,name,continent,surface,head);
+                c= new Country.CountryBuilder(Code, Name).setContinent(Continent).setSurfaceArea(SurfaceArea).setHeadOfState(HeadOfState).build();
                 return c;
             }
             return null;
@@ -109,24 +118,24 @@ public class MySQLCountryDAO implements CountryDAO {
         String query= "SELECT * FROM country where Name="+name+";";
         ResultSet rs= db.select(query);
        
-        String code="";
+        String Code="";
         String Name="";
-       String continent="";
-       float surface=0;
-       String head="";
+       String Continent="";
+       float SurfaceArea=0;
+       String HeadOfState="";
         Country c=null;
         
         try {
             if(rs.next()){
                 
-                code=rs.getString(1);
+               Code=rs.getString(1);
                 Name=rs.getString(2);
-                continent=rs.getString(3);
-                surface=rs.getFloat(4);
-                head=rs.getString(5);
+                Continent=rs.getString(3);
+                SurfaceArea=rs.getFloat(4);
+                HeadOfState=rs.getString(5);
                 
                 
-                c = new Country(code,Name,continent,surface,head);
+             c= new Country.CountryBuilder(Code, Name).setContinent(Continent).setSurfaceArea(SurfaceArea).setHeadOfState(HeadOfState).build();
                 samename.add(c);
                 
                 return samename;
@@ -153,13 +162,35 @@ public class MySQLCountryDAO implements CountryDAO {
            Float SurfaceArea=c.getSurfaceArea();
            String HeadOfState=c.getHeadOfState();
            
-           String query="Insert into country(Code,Name,Continent,SurfaceArea,HeadOfState) Values('"+Code+"'"
-                   + ",'"+Name+"','"+Continent+"',"+SurfaceArea+",'"+HeadOfState+"')";
+           String query="Insert into country(Code,Name,Continent,SurfaceArea,HeadOfState) Values('"+Code+"','"+Name+"','"+Continent+"',"+SurfaceArea+",'"+HeadOfState+"')";
            
           return  db.save(query);  
-    
-    
     }
+    
+      /*    public void getDetails(){
+        
+     System.out.println("code please");
+    String code=enter.nextLine();
+    
+       System.out.println("name please");
+    String name=enter.nextLine();
+    
+       System.out.println("continent please");
+    String continent=enter.nextLine();
+    
+       System.out.println("area please");
+    String area=enter.nextLine();
+    
+       System.out.println("cabeza please");
+    String head=enter.nextLine();
+    
+    float Area=Float.parseFloat(area);
+    
+    Country c= new Country(code,name,continent,Area,head);
+    
+    saveCountry(c);
+    }
+    */
     
   
         

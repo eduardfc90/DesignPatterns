@@ -70,7 +70,8 @@ public class Main {
                         System.out.println("Country by Name");
                         break;
                     case 4:
-                        System.out.println("Save Country");
+                        MySQLCountryDAO save1= new MySQLCountryDAO();
+                        //save1.getDetails();
                         break;
                     case 5:
                         exit = true;
